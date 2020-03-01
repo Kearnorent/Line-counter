@@ -50,7 +50,9 @@ void print_help ()
     std::cout << "This program usually takes two arguments:" << std::endl;
     std::cout << "The first is a string either representing literally a string OR a path to an input file" << std::endl;
     std::cout << "Both these inputs represent a list of patterns usually like this : \"cc,hh,json,txt\"" << std::endl;
-    std::cout << "This program counts the total number of lines of all the matching files (depending on the extensions)" << std::endl;
+    std::cout << "The second argument is a path to a directory" << std::endl;
+    std::cout << "This program counts the total number of lines of all the matching files" << std::endl;
+    std::cout << "(depending on the extensions) in the given directory and its sub-directories" << std::endl;
     std::cout << "Example of use: \" ./cl \"cc\" . \", or: \" ./cl file.in ./src \"" << std::endl;
 }
 
