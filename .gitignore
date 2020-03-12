@@ -1,4 +1,6 @@
 *.o
 *.c.swp
+*.cc.swp
+*.hh.swp
 cl
 a.out
