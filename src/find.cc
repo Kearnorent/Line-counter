@@ -5,10 +5,11 @@
 #include <sys/types.h>
 
 #include "pattern.hh"
+#include "words.hh"
 #include "find.hh"
 #include "utils.hh"
 
-size_t iterate_dir (std::string& path, Pattern& pattern, size_t& line_count)
+size_t iterate_dir (std::string& path, Pattern& pattern, Words& words, size_t& line_count, std::vector<int>& words_count)
 {
     DIR *dir = opendir(path.c_str());
     if (dir == NULL)
@@ -34,16 +35,16 @@ size_t iterate_dir (std::string& path, Pattern& pattern, size_t& line_count)
             if (is_match_pattern(new_path, pattern) == true)
             {
                 std::string content = read_file(new_path);
+                if (words.get_size() != 0)
+                    count_words_in_file(new_path, content, words, words_count);
                 size_t c = count_newlines(content);
-
                 line_count += c;
-                count_glo += c;
             }
             // Recurse (since its a directory)
             DIR *tstdir = opendir(new_path.c_str());
             if (tstdir != NULL)
             {
-                iterate_dir(new_path, pattern, line_count);
+                iterate_dir(new_path, pattern, words, line_count, words_count);
                 closedir(tstdir);
             }
         }
