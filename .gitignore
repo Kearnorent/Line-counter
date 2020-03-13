@@ -1,0 +1,5 @@
+*.o
+cl
+a.out
+*.in
+*.txt
