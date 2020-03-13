@@ -1,18 +1,26 @@
 This is a line counter!
 
-This program usually takes two arguments:
-The first is a string either representing literally a string OR a path to an input file
-Both these inputs represent a list of file extensions acting as
-patterns usually like this: "cc,hh,json,txt"
+Options:
 
-The second argument is a path to the directory that we will search through
+-p (or --patterns) -> Patterns List [MANDATORY]
 
-This program counts the total number of lines of all the matching files
-(depending on the extensions) in the given directory and its sub-directories
+-d (or --dir) -> Directory path [MANDATORY]
 
-Example of use: ./cl [string_input] [directory_path]
-OR ./cl [input_file_path] [directory_path]
+-w (or --words) -> Words List (That the program will search in the files) [OPTIONAL]
 
-Example of input file: file containing: "json, cc, c, hh, txt, h"
+-v (or --verbose) -> Verbose print option (prints where the words were found, ie: file main.cc line 30) [OPTIONAL]
 
-(./cl "cc" ".", or: " ./cl file.in "./src")
+Example of use:
+./cl -p [File_extensions] -d [directory_path]
+
+./cl -p [File_extensions] -d [directory_path] -w [Words]
+
+./cl -p [File_extensions] -d [directory_path] -w [Words] -v
+
+Example of 'File_extensions': "json, cc, c, hh, txt, h"
+
+Example of 'directory_path': "."
+
+Example of 'Words': "FIXME,TODO"
+
+(./cl -p "cc" -d "." -w "FIXME" -v)

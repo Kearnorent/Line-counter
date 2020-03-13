@@ -1,5 +1,8 @@
 *.o
-cl
-a.out
 *.in
 *.txt
+*.c.swp
+*.cc.swp
+*.hh.swp
+cl
+a.out

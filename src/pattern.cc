@@ -32,8 +32,11 @@ void Pattern::fill_patterns (std::string& content)
         {
             if (i == len - 1)
                 buf += content[i];
-            patterns.push_back(buf);
-            buf = "*.";
+            if (buf != "*.")
+            {
+                patterns.push_back(buf);
+                buf = "*.";
+            }
         }
         else
         {
@@ -44,21 +47,5 @@ void Pattern::fill_patterns (std::string& content)
 
 Pattern::Pattern (std::string& input)
 {
-    // Open file
-    std::ifstream input_file(input);
-
-    // Cas ou l'input n'est pas un file mais une string
-    if (input_file.is_open() == false)
-    {
-        this->fill_patterns(input);
-        return;
-    }
-
-    // Read file
-    std::string content((std::istreambuf_iterator<char>(input_file)), (std::istreambuf_iterator<char>()));
-
-    this->fill_patterns(content);
-
-    // Close file
-    input_file.close();
+    this->fill_patterns(input);
 }
