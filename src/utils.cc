@@ -14,7 +14,12 @@ void final_print (Words& words, std::vector<int> words_count, Pattern& pattern, 
 
     for (size_t c = 0; c < words.get_size(); c++)
     {
-        std::cout << "\033[1;34m" << "The word " << "\033[1;30m" << "\'" << words[c] << "\'" << "\033[34m" << " appeared: " << "\033[0;32m" << words_count[c] << "\033[1;34m" << " times." << "\033[0m" << '\n';
+        if (words_count[c] > 1)
+            std::cout << "\033[1;34m" << "The word " << "\033[1;30m" << "\'" << words[c] << "\'" << "\033[34m" << " appeared: " << "\033[0;32m" << words_count[c] << "\033[1;34m" << " times." << "\033[0m" << '\n';
+        else if (words_count[c] == 1)
+            std::cout << "\033[1;34m" << "The word " << "\033[1;30m" << "\'" << words[c] << "\'" << "\033[34m" << " appeared: " << "\033[0;32m" << words_count[c] << "\033[1;34m" << " time." << "\033[0m" << '\n';
+        else
+            std::cout << "\033[1;34m" << "The word " << "\033[1;30m" << "\'" << words[c] << "\'" << "\033[1;34m" << " didn't appear at all." << "\033[0m" << '\n';
     }
 
     std::cout << "\033[1;34m"  << "The total number of lines is: " << "\033[0;32m" << line_count << "\033[1;34m" << " (from the files matching the following file names: " << "\033[1;30m";
@@ -65,11 +70,6 @@ void test_dir (DIR *dir)
     {
         closedir(dir);
     }
-}
-
-void print_help ()
-{
-    //FIXME
 }
 
 void print_arg_error ()
