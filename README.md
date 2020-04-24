@@ -10,7 +10,7 @@ Options:
 
 -v (or --verbose) -> Verbose print option (prints where the words were found, ie: file main.cc line 30) [OPTIONAL]
 
-Example of use:
+Usage:
 ./cl -p [File_extensions] -d [directory_path]
 
 ./cl -p [File_extensions] -d [directory_path] -w [Words]

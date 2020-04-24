@@ -25,7 +25,7 @@ void count_words_in_file (std::string filename, std::string file_content, Words&
                     words_count[i] += 1;
                     if (options.find_option_if_set("v") != "")
                     {
-                        std::cout << "\033[1;34m" << "[" << filename << ":" << count_newlines << "]" << "\033[1;30m" << " \'" << words[i] << "\'" << "\033[0m" << "\n";
+                        std::cout << "\033[1;34m" << "[" << filename << ":" << count_newlines + 1 << "]" << "\033[1;30m" << " \'" << words[i] << "\'" << "\033[0m" << "\n";
                     }
                     break;
                 }
