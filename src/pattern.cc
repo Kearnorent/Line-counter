@@ -20,7 +20,7 @@ void Pattern::fill_patterns (std::string& content)
 {
     // Fill 'patterns' vector
     size_t len = content.size();
-    std::string buf = "*.";
+    std::string buf = "*";
     for (size_t i = 0; i < len; i++)
     {
         if (content[i] == ' ' or content[i] == '\t')
@@ -32,10 +32,10 @@ void Pattern::fill_patterns (std::string& content)
         {
             if (i == len - 1)
                 buf += content[i];
-            if (buf != "*.")
+            if (buf != "*")
             {
                 patterns.push_back(buf);
-                buf = "*.";
+                buf = "*";
             }
         }
         else
