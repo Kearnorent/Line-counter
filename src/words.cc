@@ -47,11 +47,7 @@ void Words::set_words (std::string words)
     std::string buf = "";
     for (size_t i = 0; i < len; i++)
     {
-        if (words[i] == ' ' or words[i] == '\t')
-        {
-            continue;
-        }
-        else if (words[i] == ',' or words[i] == '\n'
+        if (words[i] == ',' or words[i] == '\n'
                 or words[i] == '\0' or i == len - 1)
         {
             if (i == len - 1)
