@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
     std::string patterns = options.find_option_if_set("p");
     std::string dir_path = options.find_option_if_set("d");
     std::string words_str = options.find_option_if_set("w");
-    if (dir_path != "")
+    if (dir_path != "" and patterns != "")
     {
         DIR *dir = opendir(dir_path.c_str());
         test_dir(dir);
