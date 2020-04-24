@@ -74,5 +74,5 @@ void test_dir (DIR *dir)
 
 void print_arg_error ()
 {
-    std::cerr << "Usage: ./cl -p [Patterns] -d [Directory] -w [Words] -v" << std::endl;
+    std::cerr << "Usage: ./cl -p [Patterns] -d [Directory] [ -w [Words] -v ]" << std::endl;
 }
