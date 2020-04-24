@@ -3,11 +3,23 @@
 #include <dirent.h>
 #include <fnmatch.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <exception>
 
 #include "pattern.hh"
 #include "words.hh"
 #include "find.hh"
 #include "utils.hh"
+
+bool is_directory (std::string& path)
+{
+    struct stat sb;
+    if (stat(path.c_str(), &sb) != 0)
+        return false;
+    if (S_ISDIR(sb.st_mode))
+        return true;
+    return false;
+}
 
 size_t iterate_dir (std::string& path, Pattern& pattern, Words& words, size_t& line_count, std::vector<int>& words_count)
 {
@@ -32,13 +44,21 @@ size_t iterate_dir (std::string& path, Pattern& pattern, Words& words, size_t& l
             else
                 new_path = path + "/" + ent->d_name;
             // Matches a pattern
-            if (is_match_pattern(new_path, pattern) == true)
+            try
             {
-                std::string content = read_file(new_path);
-                if (words.get_size() != 0)
-                    count_words_in_file(new_path, content, words, words_count);
-                size_t c = count_newlines(content);
-                line_count += c;
+                if (is_match_pattern(new_path, pattern) == true and is_directory(new_path) == false)
+                {
+                    //std::cout << new_path << '\n';
+                    std::string content = read_file(new_path);
+                    if (words.get_size() != 0)
+                        count_words_in_file(new_path, content, words, words_count);
+                    size_t c = count_newlines(content);
+                    line_count += c;
+                }
+            }
+            catch (std::exception& e)
+            {
+                std::cerr << "Error reading file: " << e.what() << '\n';
             }
             // Recurse (since its a directory)
             DIR *tstdir = opendir(new_path.c_str());
