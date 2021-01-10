@@ -1,26 +1,39 @@
-This is a line counter!
+# Line counter
+---
 
-Options:
+### How to build & Usage
 
--p (or --patterns) -> Patterns List [MANDATORY]
+    mkdir build && cd build/ && cmake .. && make -j && ./cl
 
--d (or --dir) -> Directory path [MANDATORY]
+###
 
--w (or --words) -> Words List (That the program will search in the files) [OPTIONAL]
+    Options:
 
--v (or --verbose) -> Verbose print option (prints where the words were found, ie: file main.cc line 30) [OPTIONAL]
+    -p (or --patterns) -> Patterns List [MANDATORY]
 
-Usage:
-./cl -p [File_extensions] -d [directory_path]
+    -d (or --dir) -> Directory path [MANDATORY]
 
-./cl -p [File_extensions] -d [directory_path] -w [Words]
+    -w (or --words) -> Words List (That the program will search in the files) [OPTIONAL]
 
-./cl -p [File_extensions] -d [directory_path] -w [Words] -v
+    -v (or --verbose) -> Verbose print option (prints where the words were found, ie: file main.cc line 30) [OPTIONAL]
 
-Example of 'File_extensions': "json, cc, c, hh, txt, h"
+###
+  
+    Usage:
+    
+    ./cl -p [File_extensions] -d [directory_path]
 
-Example of 'directory_path': "."
+    ./cl -p [File_extensions] -d [directory_path] -w [Words]
 
-Example of 'Words': "FIXME,TODO"
+    ./cl -p [File_extensions] -d [directory_path] -w [Words] -v
 
-(./cl -p "cc" -d "." -w "FIXME" -v)
+    Example of 'File_extensions': "json, cc, c, hh, txt, h"
+
+    Example of 'directory_path': "."
+
+    Example of 'Words': "FIXME,TODO"
+
+    (./cl -p "cc" -d "." -w "FIXME" -v)
+
+
+
