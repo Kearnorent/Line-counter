@@ -1,6 +1,11 @@
-# Line counter
+# Line counter tool
 ---
 
+:pushpin: The Project was implemented in C++.
+
+:pushpin: This tool counts the total number of lines of certain files in a given directory. As well as find certain words in the matched files.
+
+---
 ### How to build & Usage
 
     mkdir build && cd build/ && cmake .. && make -j && ./cl
